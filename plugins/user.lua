@@ -9,4 +9,23 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+  -- 特定の文字間をいじったりするやつ
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+  },
+  {
+    "TimUntersberger/neogit",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("neogit").setup()
+    end
+  }
 }
