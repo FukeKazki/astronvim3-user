@@ -15,9 +15,9 @@ return {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
     end
   },
   {
@@ -39,5 +39,16 @@ return {
     "FukeKazki/denops-slack.vim",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
-  }
+  },
+  {
+    "sigmasd/deno-nvim", -- add lsp plugin
+    version = "*",       -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    {
+      "williamboman/mason-lspconfig.nvim",
+      opts = {
+        ensure_installed = { "denols" }, -- automatically install lsp
+      },
+    },
+  },
 }
