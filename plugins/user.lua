@@ -27,5 +27,17 @@ return {
     config = function()
       require("neogit").setup()
     end
+  },
+  {
+    -- Denoでvimプラグインが動作するようになるやつ
+    "vim-denops/denops.vim",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+  },
+  {
+    -- slackに投稿するプラグイン
+    "FukeKazki/denops-slack.vim",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
   }
 }
