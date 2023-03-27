@@ -19,6 +19,7 @@ return {
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
     ["<Leader>gn"] = { "<Cmd>Neogit<CR>", desc = "Neogit" },
+    ["[j"] = { "<Plug>(jumpcursor-jump)", desc = "jump" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
   },

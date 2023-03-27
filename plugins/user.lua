@@ -51,4 +51,16 @@ return {
       },
     },
   },
+  {
+    -- carbonをつかって画像化するプラグイン
+    "kristijanhusak/vim-carbon-now-sh",
+    version = "*",       -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+  },
+  {
+    -- 遷移を楽にするプラグイン
+    "skanehira/jumpcursor.vim",
+    version = "*",       -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+  },
 }
