@@ -33,7 +33,7 @@ return {
           -- "go",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
+          "typescript",
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
@@ -87,7 +87,7 @@ return {
     }
   },
   yamlls = {
-             -- override table for require("lspconfig").yamlls.setup({...})
+    -- override table for require("lspconfig").yamlls.setup({...})
     settings = {
       yaml = {
         schemas = {
