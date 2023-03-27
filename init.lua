@@ -74,6 +74,31 @@ return {
       },
     },
   },
+  jsonls = {
+    settings = {
+      json = {
+        schemas = {
+          {
+            fileMatch = { 'deno.json', 'deno.jsonc' },
+            url = "https://deno.land/x/deno/cli/schemas/config-file.v1.json"
+          }
+        }
+      }
+    }
+  },
+  yamlls = {
+             -- override table for require("lspconfig").yamlls.setup({...})
+    settings = {
+      yaml = {
+        schemas = {
+          ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+          ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+          ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
+          ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml"
+        },
+      },
+    },
+  },
   -- This function is run last and is a good place to configuring
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
