@@ -40,7 +40,7 @@ return {
   },
   {
     "sigmasd/deno-nvim", -- add lsp plugin
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*",       -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     {
       "williamboman/mason-lspconfig.nvim",
@@ -67,5 +67,11 @@ return {
     event = "VeryLazy",
     build = "sh install.sh yarn",
     config = function() require("import-cost").setup() end,
+  },
+  {
+    -- 行ごとにgitblameを表示するプラグイン
+    "f-person/git-blame.nvim",
+    version = "*",
+    event = "VeryLazy",
   },
 }
