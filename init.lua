@@ -46,7 +46,7 @@ return {
     },
     setup_handlers = {
       -- add custom handler
-      denols = function(_, opts) require("deno-nvim").setup { server = opts } end
+      denols = function(_, opts) require("deno-nvim").setup { server = opts } end,
     },
     config = {
       denols = function(opts)
@@ -54,7 +54,7 @@ return {
         return opts
       end,
       tsserver = function(opts)
-        opts.root_dir = require("lspconfig.util").root_pattern("package.json")
+        opts.root_dir = require("lspconfig.util").root_pattern "package.json"
         opts.single_file_support = false
         return opts
       end,
@@ -79,12 +79,12 @@ return {
       json = {
         schemas = {
           {
-            fileMatch = { 'deno.json', 'deno.jsonc' },
-            url = "https://deno.land/x/deno/cli/schemas/config-file.v1.json"
-          }
-        }
-      }
-    }
+            fileMatch = { "deno.json", "deno.jsonc" },
+            url = "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+          },
+        },
+      },
+    },
   },
   yamlls = {
     -- override table for require("lspconfig").yamlls.setup({...})
@@ -94,7 +94,7 @@ return {
           ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
           ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
           ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
-          ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml"
+          ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
         },
       },
     },

@@ -15,18 +15,16 @@ return {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-      require("nvim-surround").setup({
+      require("nvim-surround").setup {
         -- Configuration here, or leave empty to use defaults
-      })
-    end
+      }
+    end,
   },
   {
     "TimUntersberger/neogit",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
-    config = function()
-      require("neogit").setup()
-    end
+    config = function() require("neogit").setup() end,
   },
   {
     -- Denoでvimプラグインが動作するようになるやつ
@@ -54,13 +52,13 @@ return {
   {
     -- carbonをつかって画像化するプラグイン
     "kristijanhusak/vim-carbon-now-sh",
-    version = "*",       -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
   },
   {
     -- 遷移を楽にするプラグイン
     "skanehira/jumpcursor.vim",
-    version = "*",       -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
   },
 }
