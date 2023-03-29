@@ -40,7 +40,7 @@ return {
   },
   {
     "sigmasd/deno-nvim", -- add lsp plugin
-    version = "*",       -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     {
       "williamboman/mason-lspconfig.nvim",
@@ -60,5 +60,12 @@ return {
     "skanehira/jumpcursor.vim",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
+  },
+  {
+    "barrett-ruth/import-cost.nvim",
+    version = "*",
+    event = "VeryLazy",
+    build = "sh install.sh yarn",
+    config = function() require("import-cost").setup() end,
   },
 }
