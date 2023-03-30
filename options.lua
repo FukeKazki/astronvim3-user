@@ -18,6 +18,8 @@ return {
     ui_notifications_enabled = true, -- disable notifications when toggling UI elements
     slack_api_token = os.getenv "SLACK_API_TOKEN",
     slack_channel = "C027WA7N9T2",
+    -- ["denops#debug"] = 1, -- プラグイン開発中だけONにする
+    chatgpt_api_token = os.getenv "CHATGPT_API_TOKEN",
   },
 }
 -- If you need more control, you can use the function()...end notation

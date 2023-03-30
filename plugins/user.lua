@@ -80,4 +80,15 @@ return {
     event = "VeryLazy",
     config = function() require("todo-comments").setup() end,
   },
+  {
+    "nvim-treesitter/playground",
+    version = "*",
+    event = "VeryLazy",
+  },
+  {
+    -- 翻訳するプラグイン
+    "skanehira/denops-translate.vim",
+    version = "*",
+    event = "VeryLazy",
+  },
 }
