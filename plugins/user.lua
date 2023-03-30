@@ -74,4 +74,10 @@ return {
     version = "*",
     event = "VeryLazy",
   },
+  {
+    "folke/todo-comments.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function() require("todo-comments").setup() end,
+  },
 }
