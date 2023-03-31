@@ -91,4 +91,10 @@ return {
     version = "*",
     event = "VeryLazy",
   },
+  {
+    -- 文字列を切り替える
+    "AndrewRadev/switch.vim",
+    version = "*",
+    event = "VeryLazy",
+  },
 }
