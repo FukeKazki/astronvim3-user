@@ -132,22 +132,37 @@ return {
     vim.opt.runtimepath:prepend { "/Users/fuke/Develop/github.com/fuke/denops-chatgpt.vim/" }
 
     -- Normal と NormalNC のハイライト設定を変数に代入
-    local color_normal = vim.api.nvim_get_hl_by_name("Normal", true)
-    local color_normal_nc = vim.api.nvim_get_hl_by_name("NormalNC", true)
+    -- local color_normal = vim.api.nvim_get_hl_by_name("Normal", true)
+    -- local color_normal_nc = vim.api.nvim_get_hl_by_name("NormalNC", true)
 
+    -- vim.api.nvim_set_hl(0, "Normal", {
+    --   ctermbg = 'NONE'
+    -- })
+    -- vim.api.nvim_set_hl(0, "NonText", {
+    --   ctermbg = 'NONE'
+    -- })
+    -- vim.api.nvim_set_hl(0, "LineNr", {
+    --   ctermbg = 'NONE'
+    -- })
+    -- vim.api.nvim_set_hl(0, "Folded", {
+    --   ctermbg = 'NONE'
+    -- })
+    -- vim.api.nvim_set_hl(0, "EndOfBuffer", {
+    --   ctermbg = 'NONE'
+    -- })
     -- Neovim からフォーカスか外れた時に Normal の色を NormalNC にして
     -- フォーカスが戻った時に Normal に戻す
-    vim.api.nvim_create_autocmd({ "FocusLost" }, {
-      pattern = { "*" },
-      callback = function()
-        vim.api.nvim_set_hl(0, "Normal", { fg = color_normal_nc.foreground, bg = color_normal_nc.background })
-      end,
-    })
-    vim.api.nvim_create_autocmd({ "FocusGained" }, {
-      pattern = { "*" },
-      callback = function()
-        vim.api.nvim_set_hl(0, "Normal", { fg = color_normal.foreground, bg = color_normal.background })
-      end,
-    })
+    -- vim.api.nvim_create_autocmd({ "FocusLost" }, {
+    --   pattern = { "*" },
+    --   callback = function()
+    --     vim.api.nvim_set_hl(0, "Normal", { fg = color_normal_nc.foreground, bg = color_normal_nc.background })
+    --   end,
+    -- })
+    -- vim.api.nvim_create_autocmd({ "FocusGained" }, {
+    --   pattern = { "*" },
+    --   callback = function()
+    --     vim.api.nvim_set_hl(0, "Normal", { fg = color_normal.foreground, bg = color_normal.background })
+    --   end,
+    -- })
   end,
 }
