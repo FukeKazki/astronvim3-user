@@ -40,7 +40,7 @@ return {
   },
   {
     "sigmasd/deno-nvim", -- add lsp plugin
-    version = "*",       -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     {
       "williamboman/mason-lspconfig.nvim",
@@ -96,5 +96,11 @@ return {
     "AndrewRadev/switch.vim",
     version = "*",
     event = "VeryLazy",
+  },
+  {
+    "nvim-telescope/telescope-live-grep-args.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function() require("telescope").load_extension "live_grep_args" end,
   },
 }

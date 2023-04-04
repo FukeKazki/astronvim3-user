@@ -21,6 +21,10 @@ return {
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
     ["<Leader>gn"] = { "<Cmd>Neogit<CR>", desc = "Neogit" },
+    ["<Leader>fg"] = {
+      function() require("telescope").extensions.live_grep_args.live_grep_args() end,
+      desc = "live grep",
+    },
     ["[j"] = { "<Plug>(jumpcursor-jump)", desc = "jump" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
