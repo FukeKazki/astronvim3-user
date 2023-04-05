@@ -25,6 +25,11 @@ return {
       function() require("telescope").extensions.live_grep_args.live_grep_args() end,
       desc = "live grep",
     },
+    ["<Leader>fb"] = {
+      -- https://github.com/nvim-telescope/telescope-file-browser.nvim
+      function() require("telescope").extensions.file_browser.file_browser() end,
+      desc = "file browser",
+    },
     ["[j"] = { "<Plug>(jumpcursor-jump)", desc = "jump" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command

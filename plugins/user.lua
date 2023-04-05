@@ -40,7 +40,7 @@ return {
   },
   {
     "sigmasd/deno-nvim", -- add lsp plugin
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*",       -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     {
       "williamboman/mason-lspconfig.nvim",
@@ -102,5 +102,11 @@ return {
     version = "*",
     event = "VeryLazy",
     config = function() require("telescope").load_extension "live_grep_args" end,
+  },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function() require("telescope").load_extension "file_browser" end,
   },
 }
