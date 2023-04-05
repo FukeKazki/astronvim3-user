@@ -31,6 +31,8 @@ return {
       desc = "file browser",
     },
     ["[j"] = { "<Plug>(jumpcursor-jump)", desc = "jump" },
+    ["<S-l>"] = { "<cmd>bnext<cr>", desc = "Next Buffer" },
+    ["<S-h>"] = { "<cmd>bprev<cr>", desc = "Prev Buffer" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
   },
