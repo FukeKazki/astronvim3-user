@@ -109,4 +109,21 @@ return {
     event = "VeryLazy",
     config = function() require("telescope").load_extension "file_browser" end,
   },
+  {
+    "vim-skk/skkeleton",
+    lazy = false,
+    dependencies = { "vim-denops/denops.vim" },
+    init = function()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "skkeleton-initialize-pre",
+        callback = function()
+          vim.fn["skkeleton#config"] {
+            eggLikeNewline = true,
+            registerConvertResult = true,
+            globalJisyo = "~/Develop/SKK-JISYO.L",
+          }
+        end,
+      })
+    end,
+  },
 }

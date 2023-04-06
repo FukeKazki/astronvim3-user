@@ -40,4 +40,10 @@ return {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },
+  i = {
+    ["<C-i>"] = { "<Plug>(skkeleton-enable)", desc = "skk" },
+  },
+  c = {
+    ["<C-i>"] = { "<Plug>(skkeleton-enable)", desc = "skk" },
+  },
 }
