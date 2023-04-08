@@ -120,10 +120,36 @@ return {
           vim.fn["skkeleton#config"] {
             eggLikeNewline = true,
             registerConvertResult = true,
-            globalJisyo = "~/Develop/SKK-JISYO.L",
+            globalJisyo = "~/.skk/SKK-JISYO.L",
           }
         end,
       })
     end,
   },
+  {
+    "Shougo/ddc.vim",
+    lazy = false,
+    dependencies = { "vim-denops/denops.vim", "Shougo/ddc-ui-native" },
+    config = function()
+      local patch_global = vim.fn['ddc#custom#patch_global']
+      -- UIに何を使うか
+      patch_global('ui', 'native')
+      -- 補完候補を設定
+      patch_global('sources', { 'skkeleton' })
+      patch_global('sourceOptions', {
+        _ = {
+          matchers = { 'matcher_head' },
+          sorters = { 'sorter_rank' }
+        },
+        skkeleton = {
+          mark = 'skkeleton',
+          matchers = { 'skkeleton' },
+          sorters = {},
+          isVolatile = true,
+          minAutoCompleteLength = 2,
+        },
+      })
+      vim.fn['ddc#enable']()
+    end
+  }
 }
