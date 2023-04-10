@@ -4,27 +4,27 @@ return {
   -- 背景透過のための設定
   -- ハイライトが定義されているのを探して消す！
   Normal = {
-    ctermbg = 'NONE'
+    ctermbg = "NONE",
   },
   NormalNC = {
-    ctermbg = 'NONE'
+    ctermbg = "NONE",
   },
   NonText = {
-    ctermbg = 'NONE'
+    ctermbg = "NONE",
   },
   LineNr = {
-    ctermbg = 'NONE'
+    ctermbg = "NONE",
   },
   Folded = {
-    ctermbg = 'NONE'
+    ctermbg = "NONE",
   },
   EndOfBuffer = {
-    ctermbg = 'NONE'
+    ctermbg = "NONE",
   },
   NeoTreeNormal = {
-    ctermbg = 'NONE'
+    ctermbg = "NONE",
   },
   NeoTreeNormalNC = {
-    ctermbg = 'NONE'
-  }
+    ctermbg = "NONE",
+  },
 }
