@@ -7,13 +7,12 @@ return {
     local TablineBufnr = {
       provider = function(self) return tostring(self.bufnr) .. ". " end,
       hl = function(self)
-        if self.is_active then
-          return {
-            -- 透明
-            bg = "NONE",
-          }
+        if self.is_active or self.is_visible then
+          return {}
         else
-          return "Comment"
+          return {
+            fg = "gray",
+          }
         end
       end,
     }
@@ -26,7 +25,19 @@ return {
         filename = filename == "" and "[No Name]" or vim.fn.fnamemodify(filename, ":t")
         return filename
       end,
-      hl = function(self) return { bold = self.is_active or self.is_visible } end,
+      hl = function(self)
+        if self.is_active or self.is_visible then
+          return {
+            bold = true,
+            fg = "NONE",
+          }
+        else
+          return {
+            bold = false,
+            fg = "gray",
+          }
+        end
+      end,
     }
 
     -- this looks exactly like the FileFlags component that we saw in
@@ -41,7 +52,7 @@ return {
       {
         condition = function(self)
           return not vim.api.nvim_buf_get_option(self.bufnr, "modifiable")
-              or vim.api.nvim_buf_get_option(self.bufnr, "readonly")
+            or vim.api.nvim_buf_get_option(self.bufnr, "readonly")
         end,
         provider = function(self)
           if vim.api.nvim_buf_get_option(self.bufnr, "buftype") == "terminal" then
@@ -58,7 +69,7 @@ return {
         local filename = self.filename
         local extension = vim.fn.fnamemodify(filename, ":e")
         self.icon, self.icon_color =
-            require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
+          require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
       end,
       provider = function(self) return self.icon and (self.icon .. " ") end,
       hl = function(self) return { fg = self.icon_color } end,
@@ -66,20 +77,9 @@ return {
     -- Here the filename block finally comes together
     local TablineFileNameBlock = {
       init = function(self) self.filename = vim.api.nvim_buf_get_name(self.bufnr) end,
-      hl = function(self)
-        if self.is_active then
-          -- return "TabLineSel"
-          return {
-            -- 透明
-            bg = "NONE",
-          }
-          -- why not?
-          -- elseif not vim.api.nvim_buf_is_loaded(self.bufnr) then
-          --     return { fg = "gray" }
-        else
-          return "TabLine"
-        end
-      end,
+      hl = {
+        bg = "NONE",
+      },
       on_click = {
         callback = function(_, minwid, _, button)
           if button == "m" then -- close on mouse middle click
@@ -97,37 +97,6 @@ return {
       TablineFileFlags,
     }
 
-    -- a nice "x" button to close the buffer
-    local TablineCloseButton = {
-      condition = function(self) return not vim.api.nvim_buf_get_option(self.bufnr, "modified") end,
-      { provider = " " },
-      {
-        provider = "",
-        hl = function(self)
-          if self.is_active then
-            return {
-              -- 透明
-              bg = "NONE",
-              fg = "gray",
-            }
-          else
-            return {
-              bg = utils.get_highlight("TabLine").bg,
-              fg = "gray",
-            }
-          end
-        end,
-        on_click = {
-          callback = function(_, minwid)
-            vim.schedule(function() vim.api.nvim_buf_delete(minwid, { force = false }) end)
-            vim.cmd.redrawtabline()
-          end,
-          minwid = function(self) return self.bufnr end,
-          name = "heirline_tabline_close_buffer_callback",
-        },
-      },
-    }
-
     -- The final touch!
     -- local TablineBufferBlock = { TablineFileNameBlock, TablineCloseButton }
     local TablineBufferBlock = utils.surround({ " ", " " }, function(self)
@@ -138,7 +107,6 @@ return {
       end
     end, {
       TablineFileNameBlock,
-      TablineCloseButton,
     })
 
     -- and here we go
@@ -146,7 +114,7 @@ return {
       TablineBufferBlock,
       { provider = "", hl = { fg = "gray" } }, -- left truncation, optional (defaults to "<")
       { provider = "", hl = { fg = "gray" } } -- right trunctation, also optional (defaults to ...... yep, ">")
-    -- by the way, open a lot of buffers and try clicking them ;)
+      -- by the way, open a lot of buffers and try clicking them ;)
     )
 
     return {

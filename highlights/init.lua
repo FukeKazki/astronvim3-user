@@ -27,4 +27,13 @@ return {
   NeoTreeNormalNC = {
     ctermbg = "NONE",
   },
+  TabLine = {
+    bg = "NONE",
+  },
+  TabLineFill = {
+    bg = "NONE",
+  },
+  TabLineSel = {
+    bg = "NONE",
+  },
 }
