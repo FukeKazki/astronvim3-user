@@ -36,4 +36,7 @@ return {
   TabLineSel = {
     bg = "NONE",
   },
+  StatusLine = {
+    bg = "NONE",
+  },
 }
