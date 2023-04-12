@@ -52,7 +52,7 @@ return {
       {
         condition = function(self)
           return not vim.api.nvim_buf_get_option(self.bufnr, "modifiable")
-            or vim.api.nvim_buf_get_option(self.bufnr, "readonly")
+              or vim.api.nvim_buf_get_option(self.bufnr, "readonly")
         end,
         provider = function(self)
           if vim.api.nvim_buf_get_option(self.bufnr, "buftype") == "terminal" then
@@ -69,7 +69,7 @@ return {
         local filename = self.filename
         local extension = vim.fn.fnamemodify(filename, ":e")
         self.icon, self.icon_color =
-          require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
+            require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
       end,
       provider = function(self) return self.icon and (self.icon .. " ") end,
       hl = function(self) return { fg = self.icon_color } end,
@@ -114,15 +114,44 @@ return {
       TablineBufferBlock,
       { provider = "", hl = { fg = "gray" } }, -- left truncation, optional (defaults to "<")
       { provider = "", hl = { fg = "gray" } } -- right trunctation, also optional (defaults to ...... yep, ">")
-      -- by the way, open a lot of buffers and try clicking them ;)
+    -- by the way, open a lot of buffers and try clicking them ;)
     )
 
+    local WorkDir = {
+      init = function(self)
+        self.icon = " "
+        local cwd = vim.fn.getcwd(0)
+        self.cwd = vim.fn.fnamemodify(cwd, ":~")
+      end,
+      hl = { fg = "gray" },
+      flexible = 1,
+      {
+        -- evaluates to the full-lenth path
+        provider = function(self)
+          local trail = self.cwd:sub(-1) == "/" and "" or "/"
+          return self.icon .. self.cwd .. trail .. " "
+        end,
+      },
+      {
+        -- evaluates to the shortened path
+        provider = function(self)
+          local cwd = vim.fn.pathshorten(self.cwd)
+          local trail = self.cwd:sub(-1) == "/" and "" or "/"
+          return self.icon .. cwd .. trail .. " "
+        end,
+      },
+      {
+        -- evaluates to "", hiding the component
+        provider = "",
+      },
+    }
     return {
       statusline = {
         hl = { fg = "fg", bg = "bg" },
         status.component.mode(),
         status.component.git_branch(),
-        status.component.file_info { filetype = {}, filename = false, file_modified = false },
+        WorkDir,
+        status.component.file_info { filename = {} },
         status.component.git_diff(),
         status.component.diagnostics(),
         status.component.fill(),
@@ -136,9 +165,9 @@ return {
         status.component.fill(),
         status.component.lsp(),
         status.component.treesitter(),
-        status.component.nav(),
         status.component.mode { surround = { separator = "right" } },
       },
+      -- winbar = {},
       tabline = {
         {
           -- file tree padding
