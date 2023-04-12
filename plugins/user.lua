@@ -40,7 +40,7 @@ return {
   },
   {
     "sigmasd/deno-nvim", -- add lsp plugin
-    version = "*",       -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     {
       "williamboman/mason-lspconfig.nvim",
@@ -131,25 +131,49 @@ return {
     lazy = false,
     dependencies = { "vim-denops/denops.vim", "Shougo/ddc-ui-native" },
     config = function()
-      local patch_global = vim.fn['ddc#custom#patch_global']
+      local patch_global = vim.fn["ddc#custom#patch_global"]
       -- UIに何を使うか
-      patch_global('ui', 'native')
+      patch_global("ui", "native")
       -- 補完候補を設定
-      patch_global('sources', { 'skkeleton' })
-      patch_global('sourceOptions', {
+      patch_global("sources", { "skkeleton" })
+      patch_global("sourceOptions", {
         _ = {
-          matchers = { 'matcher_head' },
-          sorters = { 'sorter_rank' }
+          matchers = { "matcher_head" },
+          sorters = { "sorter_rank" },
         },
         skkeleton = {
-          mark = 'skkeleton',
-          matchers = { 'skkeleton' },
+          mark = "skkeleton",
+          matchers = { "skkeleton" },
           sorters = {},
           isVolatile = true,
           minAutoCompleteLength = 2,
         },
       })
-      vim.fn['ddc#enable']()
-    end
-  }
+      vim.fn["ddc#enable"]()
+    end,
+  },
+  {
+    -- 保管候補をだすプラグイン
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-emoji", -- add cmp source as dependency of cmp
+      "hrsh7th/cmp-cmdline",
+    },
+    opts = function(_, opts)
+      -- opts parameter is the default options table
+      -- the function is lazy loaded so cmp is able to be required
+      local cmp = require "cmp"
+      -- modify the sources part of the options table
+      opts.sources = cmp.config.sources {
+        { name = "nvim_lsp", priority = 1000 },
+        { name = "luasnip", priority = 750 },
+        { name = "buffer", priority = 500 },
+        { name = "path", priority = 250 },
+        { name = "emoji", priority = 700 }, -- add new source
+        { name = "cmdline", priority = 500 }, -- add new source
+      }
+      -- return the new table to be used
+      return opts
+    end,
+  },
 }
