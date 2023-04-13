@@ -167,7 +167,9 @@ return {
         status.component.treesitter(),
         status.component.mode { surround = { separator = "right" } },
       },
-      -- winbar = {},
+      winbar = {
+        status.component.file_info { filename = {} },
+      },
       tabline = {
         {
           -- file tree padding
