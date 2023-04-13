@@ -147,11 +147,11 @@ return {
     }
     return {
       statusline = {
+        -- 一番下にでてる
         hl = { fg = "fg", bg = "bg" },
         status.component.mode(),
         status.component.git_branch(),
         WorkDir,
-        status.component.file_info { filename = {} },
         status.component.git_diff(),
         status.component.diagnostics(),
         status.component.fill(),
@@ -167,10 +167,10 @@ return {
         status.component.treesitter(),
         status.component.mode { surround = { separator = "right" } },
       },
-      winbar = {
+      winbar = { -- ウィンドウごとにでてる
         status.component.file_info { filename = {} },
       },
-      tabline = {
+      tabline = { -- 一番上にでてる
         {
           -- file tree padding
           -- TreeSitterの分paddingを表示する
