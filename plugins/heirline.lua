@@ -7,7 +7,7 @@ return {
     local TablineBufnr = {
       provider = function(self) return tostring(self.bufnr) .. ". " end,
       hl = function(self)
-        if self.is_active or self.is_visible then
+        if self.is_active then
           return {}
         else
           return {
@@ -26,7 +26,7 @@ return {
         return filename
       end,
       hl = function(self)
-        if self.is_active or self.is_visible then
+        if self.is_active then
           return {
             bold = true,
             fg = "NONE",
@@ -152,7 +152,6 @@ return {
         status.component.mode(),
         status.component.git_branch(),
         WorkDir,
-        status.component.git_diff(),
         status.component.diagnostics(),
         status.component.fill(),
         status.component.cmd_info(),
