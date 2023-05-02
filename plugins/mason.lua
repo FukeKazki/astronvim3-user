@@ -4,7 +4,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "lua_ls", "denols", "tsserver", "jsonls", "yamlls" },
+      ensure_installed = { "lua_ls", "denols", "tsserver", "jsonls", "yamlls", "tailwindcss" },
     },
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
