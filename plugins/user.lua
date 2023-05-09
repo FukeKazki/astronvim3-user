@@ -188,4 +188,8 @@ return {
     lazy = false,
     build = "cd app && yarn install",
   },
+  {
+    "github/copilot.vim",
+    lazy = false,
+  },
 }
