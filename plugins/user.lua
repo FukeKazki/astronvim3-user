@@ -158,6 +158,7 @@ return {
     dependencies = {
       "hrsh7th/cmp-emoji", -- add cmp source as dependency of cmp
       "hrsh7th/cmp-cmdline",
+      "zbirenbaum/copilot-cmp",
     },
     opts = function(_, opts)
       -- opts parameter is the default options table
@@ -165,12 +166,13 @@ return {
       local cmp = require "cmp"
       -- modify the sources part of the options table
       opts.sources = cmp.config.sources {
-        { name = "nvim_lsp", priority = 1000 },
-        { name = "luasnip",  priority = 750 },
-        { name = "buffer",   priority = 500 },
-        { name = "path",     priority = 250 },
-        { name = "emoji",    priority = 700 }, -- add new source
-        { name = "cmdline",  priority = 500 }, -- add new source
+        { name = "copilot",  priority = 100 },
+        { name = "nvim_lsp", priority = 100 },
+        { name = "luasnip",  priority = 20 },
+        { name = "buffer",   priority = 20 },
+        { name = "path",     priority = 60 },
+        { name = "emoji",    priority = 60 }, -- add new source
+        { name = "cmdline",  priority = 60 }, -- add new source
       }
       -- return the new table to be used
       return opts
@@ -191,5 +193,21 @@ return {
   {
     "github/copilot.vim",
     lazy = false,
+  },
+  {
+    "mrjones2014/nvim-ts-rainbow",
+    version = "*",
+    event = "VeryLazy",
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function() require("nvim-ts-autotag").setup() end,
+    version = "*",
+    event = "VeryLazy",
+  },
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    version = "*",
+    event = "VeryLazy",
   },
 }

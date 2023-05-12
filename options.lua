@@ -23,6 +23,7 @@ return {
     -- ["denops#debug"] = 1, -- プラグイン開発中だけONにする
     chatgpt_api_token = os.getenv "CHATGPT_API_TOKEN",
     indent_blankline_enabled = 0, -- 縦のラインを非表示にする
+    copilot_no_tab_map = true,
   },
 }
 -- If you need more control, you can use the function()...end notation
