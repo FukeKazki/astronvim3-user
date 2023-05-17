@@ -40,7 +40,7 @@ return {
   },
   {
     "sigmasd/deno-nvim", -- add lsp plugin
-    version = "*",       -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     {
       "williamboman/mason-lspconfig.nvim",
@@ -165,22 +165,22 @@ return {
       -- modify the sources part of the options table
       opts.sources = cmp.config.sources {
         { name = "nvim_lsp", priority = 100 },
-        { name = "luasnip",  priority = 20 },
-        { name = "buffer",   priority = 20 },
-        { name = "path",     priority = 60 },
-        { name = "emoji",    priority = 60 }, -- add new source
+        { name = "luasnip", priority = 20 },
+        { name = "buffer", priority = 20 },
+        { name = "path", priority = 60 },
+        { name = "emoji", priority = 60 }, -- add new source
       }
       -- return the new table to be used
       return opts
     end,
   },
-  {
-    name = "say-hello.nvim",
-    dir = "/Users/fukke/Develop/github.com/fukke/say-hello.nvim",
-    dev = true,
-    lazy = false,
-    config = function() require("say-hello").setup() end,
-  },
+  -- {
+  --   name = "say-hello.nvim",
+  --   dir = "/Users/fukke/Develop/github.com/fukke/say-hello.nvim",
+  --   dev = true,
+  --   lazy = false,
+  --   config = function() require("say-hello").setup() end,
+  -- },
   {
     "iamcco/markdown-preview.nvim",
     lazy = false,
@@ -195,6 +195,9 @@ return {
       require("copilot").setup {
         suggestion = {
           auto_trigger = true,
+          keymap = {
+            accept = "<C-i>",
+          },
         },
       }
     end,
