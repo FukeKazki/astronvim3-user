@@ -24,7 +24,16 @@ return {
     "TimUntersberger/neogit",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
-    config = function() require("neogit").setup() end,
+    dependencies = {
+      "sindrets/diffview.nvim",
+    },
+    config = function()
+      require("neogit").setup {
+        integrations = {
+          diffview = true,
+        },
+      }
+    end,
   },
   {
     -- Denoでvimプラグインが動作するようになるやつ
@@ -216,6 +225,11 @@ return {
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
     version = "*",
+    event = "VeryLazy",
+  },
+  {
+    "pwntester/octo.nvim",
+    config = function() require("octo").setup() end,
     event = "VeryLazy",
   },
 }
