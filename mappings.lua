@@ -33,6 +33,8 @@ return {
     ["[j"] = { "<Plug>(jumpcursor-jump)", desc = "jump" },
     ["<S-l>"] = { "<cmd>bnext<cr>", desc = "Next Buffer" },
     ["<S-h>"] = { "<cmd>bprev<cr>", desc = "Prev Buffer" },
+    ["<S-g>"] = { "<cmd>Neotree git_status<cr>", desc = "git status" },
+    ["<S-b>"] = { "<cmd>Neotree buffers<cr>", desc = "buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
   },
