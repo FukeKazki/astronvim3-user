@@ -35,6 +35,7 @@ return {
     ["<S-h>"] = { "<cmd>bprev<cr>", desc = "Prev Buffer" },
     ["<S-g>"] = { "<cmd>Neotree git_status<cr>", desc = "git status" },
     ["<S-b>"] = { "<cmd>Neotree buffers<cr>", desc = "buffers" },
+    ["<S-e>"] = { "<cmd>Neotree filesystem<cr>", desc = "explorer" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
   },
