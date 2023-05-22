@@ -43,10 +43,19 @@ return {
             condition = function(util) return util.root_has_file "rome.json" end,
           })
         end,
+        -- stylelintrcファイルがある場合のみ有効にする
+        stylelint = function()
+          local null_ls = require "null-ls"
+          null_ls.register(null_ls.builtins.diagnostics.stylelint.with {
+            condition = function(util)
+              return util.root_has_file ".stylelintrc.json" or util.root_has_file ".stylelintrc.js"
+            end,
+          })
+        end,
       },
       automatic_installation = true,
       automatic_setup = true,
-      ensure_installed = { "prettier", "stylua", "eslint_d" },
+      ensure_installed = { "prettier", "stylua", "eslint_d", "rome", "stylelint" },
     },
   },
   {
