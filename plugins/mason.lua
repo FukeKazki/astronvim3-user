@@ -4,7 +4,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "lua_ls", "denols", "tsserver", "jsonlsp", "yaml-language-server", "tailwindcss" },
+      ensure_installed = { "lua_ls", "denols", "tsserver", "jsonlsp", "yaml-language-server", "tailwindcss", "rome" },
     },
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
@@ -29,10 +29,17 @@ return {
             end,
           })
         end,
+        -- romeファイルがある場合のみ有効にする
+        rome = function()
+          local null_ls = require "null-ls"
+          null_ls.register(null_ls.builtins.formatting.rome.with {
+            condition = function(util) return util.root_has_file "rome.json" end,
+          })
+        end,
       },
       automatic_installation = true,
       automatic_setup = true,
-      ensure_installed = { "prettier", "stylua", "eslint_d", "rome" },
+      ensure_installed = { "prettier", "stylua", "eslint_d" },
     },
   },
   {
