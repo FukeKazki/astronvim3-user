@@ -32,7 +32,9 @@ return {
           local null_ls = require "null-ls"
           null_ls.register(null_ls.builtins.formatting.prettier.with {
             condition = function(util)
-              return util.root_has_file ".prettierrc.json" or util.root_has_file ".prettierrc.js"
+              return util.root_has_file ".prettierrc.json"
+                or util.root_has_file ".prettierrc.js"
+                or util.root_has_file ".prettierrc"
             end,
           })
         end,
@@ -55,7 +57,7 @@ return {
       },
       automatic_installation = true,
       automatic_setup = true,
-      ensure_installed = { "prettier", "stylua", "eslint_d", "rome", "stylelint" },
+      ensure_installed = { "prettier", "stylua", "eslint_d", "rome", "stylelint", "prettier" },
     },
   },
   {
