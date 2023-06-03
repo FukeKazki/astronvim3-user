@@ -44,11 +44,13 @@ return {
     -- ["<esc>"] = false,
   },
   i = {
+    -- ["<C-e>"] = { "<Plug>(skkeleton-toggle)", desc = "skk" },
     ["<C-[>"] = { "<Plug>(skkeleton-enable)", desc = "skk" },
-    ["<C-]>"] = { "<Plug>(skkeleton-disable)", desc = "skk" },
+    ["<C-]>"] = { "<Plug>(skkeleton-disable)<esc>", desc = "skk" },
   },
   c = {
-    ["<C-[>"] = { "<Plug>(skkeleton-enable)", desc = "skk" },
-    ["<C-]>"] = { "<Plug>(skkeleton-disable)", desc = "skk" },
+    -- ["<C-e>"] = { "<Plug>(skkeleton-toggle)", desc = "skk" },
+    -- ["<C-[>"] = { "<Plug>(skkeleton-enable)", desc = "skk" },
+    -- ["<C-]>"] = { "<Plug>(skkeleton-disable)", desc = "skk" },
   },
 }

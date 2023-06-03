@@ -49,7 +49,7 @@ return {
   },
   {
     "sigmasd/deno-nvim", -- add lsp plugin
-    version = "*",       -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     {
       "williamboman/mason-lspconfig.nvim",
@@ -128,9 +128,16 @@ return {
         callback = function()
           vim.fn["skkeleton#config"] {
             eggLikeNewline = true,
-            registerConvertResult = true,
-            globalJisyo = "~/.skk/SKK-JISYO.L",
+            globalDictionaries = {
+              "~/.skk/SKK-JISYO.L",
+              "~/.skk/skk-jisyo-emoji-ja.utf8",
+              "~/.skk/SKK-JISYO.propernoun",
+            },
           }
+          -- jjでescape
+          vim.fn["skkeleton#register_kanatable"]("rom", {
+            ["jj"] = "escape",
+          })
         end,
       })
     end,
@@ -174,10 +181,10 @@ return {
       -- modify the sources part of the options table
       opts.sources = cmp.config.sources {
         { name = "nvim_lsp", priority = 100 },
-        { name = "luasnip",  priority = 20 },
-        { name = "buffer",   priority = 20 },
-        { name = "path",     priority = 60 },
-        { name = "emoji",    priority = 60 }, -- add new source
+        { name = "luasnip", priority = 20 },
+        { name = "buffer", priority = 20 },
+        { name = "path", priority = 60 },
+        { name = "emoji", priority = 60 }, -- add new source
       }
       -- return the new table to be used
       return opts
@@ -230,6 +237,11 @@ return {
   {
     "pwntester/octo.nvim",
     config = function() require("octo").setup() end,
+    event = "VeryLazy",
+  },
+  {
+    "skanehira/denops-docker.vim",
+    version = "*",
     event = "VeryLazy",
   },
 }
