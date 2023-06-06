@@ -244,4 +244,10 @@ return {
     version = "*",
     event = "VeryLazy",
   },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
 }

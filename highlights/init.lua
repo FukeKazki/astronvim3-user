@@ -24,49 +24,49 @@ return {
   -- ctermfg: Sets foreground of cterm color ctermfg
   -- ctermbg: Sets background of cterm color ctermbg
   -- cterm: cterm attribute map, like highlight-args. If not set, cterm attributes will match those from the attribute map documented above.
-  Normal = {
-    ctermbg = "NONE",
-  },
-  NormalNC = {
-    ctermbg = "NONE",
-  },
-  NonText = {
-    ctermbg = "NONE",
-  },
-  LineNr = {
-    ctermbg = "NONE",
-  },
-  Folded = {
-    ctermbg = "NONE",
-  },
-  EndOfBuffer = {
-    ctermbg = "NONE",
-  },
-  NeoTreeNormal = {
-    ctermbg = "NONE",
-  },
-  NeoTreeNormalNC = {
-    ctermbg = "NONE",
-  },
-  TabLine = {
-    bg = "NONE",
-  },
-  TabLineFill = {
-    bg = "NONE",
-  },
-  TabLineSel = {
-    bg = "NONE",
-  },
-  StatusLine = {
-    bg = "NONE",
-  },
-  WinBar = {
-    bg = "NONE",
-  },
-  WinBarNC = {
-    bg = "NONE",
-  },
-  CursorLine = {
-    bold = true,
-  },
+  -- Normal = {
+  --   ctermbg = "NONE",
+  -- },
+  -- NormalNC = {
+  --   ctermbg = "NONE",
+  -- },
+  -- NonText = {
+  --   ctermbg = "NONE",
+  -- },
+  -- LineNr = {
+  --   ctermbg = "NONE",
+  -- },
+  -- Folded = {
+  --   ctermbg = "NONE",
+  -- },
+  -- EndOfBuffer = {
+  --   ctermbg = "NONE",
+  -- },
+  -- NeoTreeNormal = {
+  --   ctermbg = "NONE",
+  -- },
+  -- NeoTreeNormalNC = {
+  --   ctermbg = "NONE",
+  -- },
+  -- TabLine = {
+  --   bg = "NONE",
+  -- },
+  -- TabLineFill = {
+  --   bg = "NONE",
+  -- },
+  -- TabLineSel = {
+  --   bg = "NONE",
+  -- },
+  -- StatusLine = {
+  --   bg = "NONE",
+  -- },
+  -- WinBar = {
+  --   bg = "NONE",
+  -- },
+  -- WinBarNC = {
+  --   bg = "NONE",
+  -- },
+  -- CursorLine = {
+  --   bold = true,
+  -- },
 }
