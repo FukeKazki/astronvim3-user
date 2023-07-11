@@ -33,15 +33,18 @@ return {
     ["[j"] = { "<Plug>(jumpcursor-jump)", desc = "jump" },
     ["<S-l>"] = { "<cmd>bnext<cr>", desc = "Next Buffer" },
     ["<S-h>"] = { "<cmd>bprev<cr>", desc = "Prev Buffer" },
-    ["<S-g>"] = { "<cmd>Neotree git_status<cr>", desc = "git status" },
+    -- ["<S-g>"] = { "<cmd>Neotree git_status<cr>", desc = "git status" },
     ["<S-b>"] = { "<cmd>Neotree buffers<cr>", desc = "buffers" },
     ["<S-e>"] = { "<cmd>Neotree filesystem<cr>", desc = "explorer" },
     -- quick save
     ["<C-s>"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
+    ["<leader>tt"] = { "<Cmd>belowright new <CR><Cmd>terminal<CR>", desc = "open terminal" },
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
+    ["jj"] = { "<C-\\><C-n>" },
+    ["<ESC>"] = { "<C-\\><C-n>" },
   },
   i = {
     -- ["<C-e>"] = { "<Plug>(skkeleton-toggle)", desc = "skk" },
