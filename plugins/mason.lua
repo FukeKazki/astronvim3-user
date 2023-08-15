@@ -4,7 +4,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "lua_ls", "denols", "tsserver", "jsonlsp", "yaml-language-server", "tailwindcss", "rome" },
+      ensure_installed = { "lua_ls", "tsserver", "jsonlsp", "yaml-language-server", "tailwindcss" },
     },
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
@@ -28,36 +28,37 @@ return {
           })
         end,
         -- prettierrcファイルがある場合のみ有効にする
-        prettier = function()
-          local null_ls = require "null-ls"
-          null_ls.register(null_ls.builtins.formatting.prettier.with {
-            condition = function(util)
-              return util.root_has_file ".prettierrc.json"
-                or util.root_has_file ".prettierrc.js"
-                or util.root_has_file ".prettierrc"
-            end,
-          })
-        end,
+        -- prettier = function()
+        --   local null_ls = require "null-ls"
+        --   null_ls.register(null_ls.builtins.formatting.prettier.with {
+        --     condition = function(util)
+        --       return util.root_has_file ".prettierrc.json"
+        --         or util.root_has_file ".prettierrc.js"
+        --         or util.root_has_file ".prettierrc"
+        --     end,
+        --   })
+        -- end,
+        -- rome は無効化しとこう
         -- romeファイルがある場合のみ有効にする
-        rome = function()
-          local null_ls = require "null-ls"
-          null_ls.register(null_ls.builtins.formatting.rome.with {
-            condition = function(util) return util.root_has_file "rome.json" end,
-          })
-        end,
+        -- rome = function()
+        --   local null_ls = require "null-ls"
+        --   null_ls.register(null_ls.builtins.formatting.rome.with {
+        --     condition = function(util) return util.root_has_file "rome.json" end,
+        --   })
+        -- end,
         -- stylelintrcファイルがある場合のみ有効にする
-        stylelint = function()
-          local null_ls = require "null-ls"
-          null_ls.register(null_ls.builtins.diagnostics.stylelint.with {
-            condition = function(util)
-              return util.root_has_file ".stylelintrc.json" or util.root_has_file ".stylelintrc.js"
-            end,
-          })
-        end,
+        -- stylelint = function()
+        --   local null_ls = require "null-ls"
+        --   null_ls.register(null_ls.builtins.diagnostics.stylelint.with {
+        --     condition = function(util)
+        --       return util.root_has_file ".stylelintrc.json" or util.root_has_file ".stylelintrc.js"
+        --     end,
+        --   })
+        -- end,
       },
       automatic_installation = true,
       automatic_setup = true,
-      ensure_installed = { "prettier", "stylua", "eslint_d", "rome", "stylelint", "prettier" },
+      ensure_installed = { "prettier", "stylua", "eslint_d", "stylelint", "prettier" },
     },
   },
   {

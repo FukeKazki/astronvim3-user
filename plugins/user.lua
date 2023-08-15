@@ -32,17 +32,17 @@ return {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
   },
-  {
-    "sigmasd/deno-nvim", -- add lsp plugin
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    {
-      "williamboman/mason-lspconfig.nvim",
-      opts = {
-        ensure_installed = { "denols" }, -- automatically install lsp
-      },
-    },
-  },
+  -- {
+  --   "sigmasd/deno-nvim", -- add lsp plugin
+  --   version = "*", -- Use for stability; omit to use `main` branch for the latest features
+  --   event = "VeryLazy",
+  --   {
+  --     "williamboman/mason-lspconfig.nvim",
+  --     opts = {
+  --       -- ensure_installed = { "denols" }, -- automatically install lsp
+  --     },
+  --   },
+  -- },
   {
     -- carbonをつかって画像化するプラグイン
     "kristijanhusak/vim-carbon-now-sh",
@@ -234,5 +234,14 @@ return {
     lazy = false,
     priority = 1000,
     opts = {},
+  },
+  {
+    "TimUntersberger/neogit",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    dependencies = {
+      "sindrets/diffview.nvim",
+    },
+    config = function() require("neogit").setup {} end,
   },
 }
