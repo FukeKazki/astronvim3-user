@@ -32,20 +32,6 @@ return {
       -- denols = function(_, opts) require("deno-nvim").setup { server = opts } end,
     },
     -- config = {
-    -- denols = function(opts)
-    --   opts.root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")
-    --   return opts
-    -- end,
-    -- tsserver = function(opts)
-    --   opts.root_dir = require("lspconfig.util").root_pattern "package.json"
-    --   opts.single_file_support = false
-    --   return opts
-    -- end,
-    -- eslint_d = function(opts)
-    --   opts.root_dir = require("lspconfig.util").root_pattern ".eslintrc*"
-    --   opts.single_file_support = false
-    --   return opts
-    -- end,
     -- romeファイルがある場合のみ有効にする
     -- rome = function(opts)
     --   opts.root_dir = require("lspconfig.util").root_pattern "rome.json"
@@ -54,6 +40,16 @@ return {
     -- end,
     -- },
     config = {
+      tsserver = function(opts)
+        opts.root_dir = require("lspconfig.util").root_pattern "package.json"
+        opts.single_file_support = false
+        return opts
+      end,
+      denols = function(opts)
+        opts.root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")
+        opts.single_file_support = false
+        return opts
+      end,
       jsonls = {
         settings = {
           json = {
@@ -83,7 +79,8 @@ return {
         },
       },
     },
-    -- システムにインストールされているLSPを有効にする
+    -- システムに直接インストールされているLSPを有効にする
+    -- textlintとか？
     servers = {},
   },
   -- Configure require("lazy").setup() options
