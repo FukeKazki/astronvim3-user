@@ -4,7 +4,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "lua_ls", "tsserver", "jsonlsp", "yaml-language-server", "tailwindcss" },
+      ensure_installed = { "lua_ls", "tsserver", "jsonls", "yamlls", "tailwindcss" },
     },
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
@@ -87,7 +87,7 @@ return {
       --     }
       --   end,
       -- },
-      ensure_installed = { "python" },
+      -- ensure_installed = { "python" },
     },
   },
 }

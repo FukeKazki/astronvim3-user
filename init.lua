@@ -1,22 +1,16 @@
 return {
-  -- Configure AstroNvim updates
   updater = {
-    remote = "origin",     -- remote to use
-    channel = "stable",    -- "stable" or "nightly"
-    version = "latest",    -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "nightly",    -- branch name (NIGHTLY ONLY)
-    commit = nil,          -- commit hash (NIGHTLY ONLY)
-    pin_plugins = nil,     -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false,  -- skip prompts about breaking changes
-    show_changelog = true, -- show the changelog after performing an update
-    auto_quit = false,     -- automatically quit the current session after a successful update
-    remotes = {            -- easily add new remotes to track
-      --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
-      --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
-      --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
-    },
+    remote = "origin",
+    channel = "stable",
+    version = "latest",
+    branch = "nightly",
+    commit = nil,
+    pin_plugins = nil,
+    skip_prompts = false,
+    show_changelog = true,
+    auto_quit = false,
+    remotes = {},
   },
-  -- Set colorscheme to use
   colorscheme = "tokyonight",
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -24,24 +18,14 @@ return {
     underline = true,
   },
   lsp = {
-    -- customize lsp formatting options
     formatting = {
-      -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
-        allow_filetypes = { -- enable format on save for specified filetypes only
-          -- "go",
-        },
-        ignore_filetypes = { -- disable format on save for specified filetypes
-        },
+        enabled = true,
+        allow_filetypes = {},
+        ignore_filetypes = {},
       },
-      disabled = { -- disable formatting capabilities for the listed language servers
-        -- "sumneko_lua",
-      },
-      timeout_ms = 1000, -- default format timeout
-      -- filter = function(client) -- fully override the default formatting function
-      --   return true
-      -- end
+      disabled = {},
+      timeout_ms = 1000,
     },
     setup_handlers = {
       -- add custom handler
@@ -69,11 +53,38 @@ return {
     --   return opts
     -- end,
     -- },
-    -- enable servers that you already have installed without mason
-    -- システムにインストールされているLSPを有効にする
-    servers = {
-      -- "pyright"
+    config = {
+      jsonls = {
+        settings = {
+          json = {
+            schemas = {
+              {
+                fileMatch = { "deno.json", "deno.jsonc" },
+                url = "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+              },
+              {
+                fileMatch = { "package.json" },
+                url = "https://json.schemastore.org/package.json",
+              },
+            },
+          },
+        },
+      },
+      yamlls = {
+        settings = {
+          yaml = {
+            schemas = {
+              ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+              ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+              ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
+              ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
+            },
+          },
+        },
+      },
     },
+    -- システムにインストールされているLSPを有効にする
+    servers = {},
   },
   -- Configure require("lazy").setup() options
   lazy = {
@@ -82,31 +93,6 @@ return {
       rtp = {
         -- customize default disabled vim plugins
         disabled_plugins = { "tohtml", "gzip", "matchit", "zipPlugin", "netrwPlugin", "tarPlugin" },
-      },
-    },
-  },
-  jsonls = {
-    settings = {
-      json = {
-        schemas = {
-          {
-            fileMatch = { "deno.json", "deno.jsonc" },
-            url = "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
-          },
-        },
-      },
-    },
-  },
-  yamlls = {
-    -- override table for require("lspconfig").yamlls.setup({...})
-    settings = {
-      yaml = {
-        schemas = {
-          ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
-          ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-          ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
-          ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
-        },
       },
     },
   },
@@ -174,9 +160,5 @@ return {
     --     vim.api.nvim_set_hl(0, "Normal", { fg = color_normal.foreground, bg = color_normal.background })
     --   end,
     -- })
-    vim.api.nvim_create_autocmd({ "TermOpen" }, {
-      pattern = { "term://*" },
-      command = "startinsert",
-    })
   end,
 }
