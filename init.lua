@@ -28,7 +28,7 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true,     -- enable or disable format on save globally
+        enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -47,29 +47,30 @@ return {
       -- add custom handler
       -- denols = function(_, opts) require("deno-nvim").setup { server = opts } end,
     },
-    config = {
-      -- denols = function(opts)
-      --   opts.root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")
-      --   return opts
-      -- end,
-      -- tsserver = function(opts)
-      --   opts.root_dir = require("lspconfig.util").root_pattern "package.json"
-      --   opts.single_file_support = false
-      --   return opts
-      -- end,
-      -- eslint_d = function(opts)
-      --   opts.root_dir = require("lspconfig.util").root_pattern ".eslintrc*"
-      --   opts.single_file_support = false
-      --   return opts
-      -- end,
-      -- romeファイルがある場合のみ有効にする
-      -- rome = function(opts)
-      --   opts.root_dir = require("lspconfig.util").root_pattern "rome.json"
-      --   opts.single_file_support = false
-      --   return opts
-      -- end,
-    },
+    -- config = {
+    -- denols = function(opts)
+    --   opts.root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")
+    --   return opts
+    -- end,
+    -- tsserver = function(opts)
+    --   opts.root_dir = require("lspconfig.util").root_pattern "package.json"
+    --   opts.single_file_support = false
+    --   return opts
+    -- end,
+    -- eslint_d = function(opts)
+    --   opts.root_dir = require("lspconfig.util").root_pattern ".eslintrc*"
+    --   opts.single_file_support = false
+    --   return opts
+    -- end,
+    -- romeファイルがある場合のみ有効にする
+    -- rome = function(opts)
+    --   opts.root_dir = require("lspconfig.util").root_pattern "rome.json"
+    --   opts.single_file_support = false
+    --   return opts
+    -- end,
+    -- },
     -- enable servers that you already have installed without mason
+    -- システムにインストールされているLSPを有効にする
     servers = {
       -- "pyright"
     },
