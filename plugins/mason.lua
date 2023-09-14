@@ -20,20 +20,21 @@ return {
             condition = function(util) return util.root_has_file "deno.json" or util.root_has_file "deno.jsonc" end,
           })
         end,
+        -- なにも設定していないときは sanrio-yell でも実行されていい感じだけど、Deno プロジェクトや他のeslintrc を設定していないプロジェクトではうざい。
         -- eslintrcファイルがある場合のみ有効にする
-        eslint_d = function()
-          local null_ls = require "null-ls"
-          -- diagnotics, code_actions, formattingそれぞれ設定する
-          null_ls.register(null_ls.builtins.diagnostics.eslint_d.with {
-            condition = function(util) return util.root_has_file ".eslintrc.json" or util.root_has_file ".eslintrc.js" end,
-          })
-          null_ls.register(null_ls.builtins.code_actions.eslint_d.with {
-            condition = function(util) return util.root_has_file ".eslintrc.json" or util.root_has_file ".eslintrc.js" end,
-          })
-          null_ls.register(null_ls.builtins.formatting.eslint_d.with {
-            condition = function(util) return util.root_has_file ".eslintrc.json" or util.root_has_file ".eslintrc.js" end,
-          })
-        end,
+        -- eslint_d = function()
+        --   local null_ls = require "null-ls"
+        --   -- diagnotics, code_actions, formattingそれぞれ設定する
+        --   null_ls.register(null_ls.builtins.diagnostics.eslint_d.with {
+        --     condition = function(util) return util.root_has_file ".eslintrc.json" or util.root_has_file ".eslintrc.js" end,
+        --   })
+        --   null_ls.register(null_ls.builtins.code_actions.eslint_d.with {
+        --     condition = function(util) return util.root_has_file ".eslintrc.json" or util.root_has_file ".eslintrc.js" end,
+        --   })
+        --   null_ls.register(null_ls.builtins.formatting.eslint_d.with {
+        --     condition = function(util) return util.root_has_file ".eslintrc.json" or util.root_has_file ".eslintrc.js" end,
+        --   })
+        -- end,
         -- prettierrcファイルがある場合のみ有効にする
         prettier = function()
           local null_ls = require "null-ls"
