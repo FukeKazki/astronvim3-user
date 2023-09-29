@@ -52,7 +52,7 @@ return {
       {
         condition = function(self)
           return not vim.api.nvim_buf_get_option(self.bufnr, "modifiable")
-              or vim.api.nvim_buf_get_option(self.bufnr, "readonly")
+            or vim.api.nvim_buf_get_option(self.bufnr, "readonly")
         end,
         provider = function(self)
           if vim.api.nvim_buf_get_option(self.bufnr, "buftype") == "terminal" then
@@ -69,7 +69,7 @@ return {
         local filename = self.filename
         local extension = vim.fn.fnamemodify(filename, ":e")
         self.icon, self.icon_color =
-            require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
+          require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
       end,
       provider = function(self) return self.icon and (self.icon .. " ") end,
       hl = function(self) return { fg = self.icon_color } end,
@@ -114,7 +114,7 @@ return {
       TablineBufferBlock,
       { provider = "", hl = { fg = "gray" } }, -- left truncation, optional (defaults to "<")
       { provider = "", hl = { fg = "gray" } } -- right trunctation, also optional (defaults to ...... yep, ">")
-    -- by the way, open a lot of buffers and try clicking them ;)
+      -- by the way, open a lot of buffers and try clicking them ;)
     )
 
     local WorkDir = {

@@ -34,15 +34,24 @@ return {
         --   null_ls.register(null_ls.builtins.formatting.eslint_d.with {
         --     condition = function(util) return util.root_has_file ".eslintrc.json" or util.root_has_file ".eslintrc.js" end,
         --   })
-        -- end,
+        -- end,-- For eslint_d:
+        eslint_d = function()
+          require("null-ls").register(require("null-ls").builtins.diagnostics.eslint_d.with {
+            condition = function(utils)
+              return utils.root_has_file "package.json"
+                or utils.root_has_file ".eslintrc.json"
+                or utils.root_has_file ".eslintrc.js"
+            end,
+          })
+        end,
         -- prettierrcファイルがある場合のみ有効にする
         prettier = function()
-          local null_ls = require "null-ls"
-          null_ls.register(null_ls.builtins.formatting.prettier.with {
-            condition = function(util)
-              return util.root_has_file ".prettierrc.json"
-                  or util.root_has_file ".prettierrc.js"
-                  or util.root_has_file ".prettierrc"
+          require("null-ls").register(require("null-ls").builtins.formatting.prettier.with {
+            condition = function(utils)
+              return utils.root_has_file "package.json"
+                or utils.root_has_file ".prettierrc"
+                or utils.root_has_file ".prettierrc.json"
+                or utils.root_has_file ".prettierrc.js"
             end,
           })
         end,
@@ -64,7 +73,7 @@ return {
       },
       automatic_installation = true,
       automatic_setup = true,
-      ensure_installed = { "prettier", "stylua", "eslint_d", "stylelint", "prettier" },
+      ensure_installed = { "stylua", "eslint_d", "stylelint", "prettier" },
     },
   },
   {
